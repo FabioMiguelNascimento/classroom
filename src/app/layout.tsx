@@ -1,14 +1,14 @@
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Montserrat } from "next/font/google";
+import "../styles/globals.css";
+import "../styles/globals.scss";
+import { AppSidebar } from "@/components/appSidebar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+export const font = Montserrat({
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  fallback: ["Helvetica", "Arial", "sans-serif"],
   subsets: ["latin"],
 });
 
@@ -24,10 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${font.className} font-sans antialiased`}>
+        <SidebarProvider>
+          <AppSidebar />
+          <main>
+            <SidebarTrigger />
+            {children}
+          </main>
+        </SidebarProvider>
       </body>
     </html>
   );
