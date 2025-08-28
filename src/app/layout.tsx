@@ -1,9 +1,10 @@
+
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "../styles/globals.css";
 import "../styles/globals.scss";
-import { AppSidebar } from "@/components/appSidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 export const font = Montserrat({
   weight: ["400", "500", "600", "700"],
