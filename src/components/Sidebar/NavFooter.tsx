@@ -2,6 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { HelpCircle, LogOut, Settings, Sun, User, type LucideIcon } from "lucide-react";
+import React from 'react'
 
 import {
   DropdownMenu,
@@ -17,16 +18,19 @@ import {
   SidebarMenuButton,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useTheme } from "@/hooks/useTheme";
 import { Profile } from "@/types/profile.type";
 
 interface Item {
   separator?: boolean
   icon: LucideIcon;
   label: string;
+  onClick?: () => void
 }
 
 export function NavFooter({ profile }: { profile: Profile }) {
   const { isMobile } = useSidebar();
+  const { toggleTheme } = useTheme()
 
   const items: Item[] = [
     {
@@ -44,6 +48,7 @@ export function NavFooter({ profile }: { profile: Profile }) {
     {
       icon: Sun,
       label: "Theme",
+      onClick: toggleTheme
     },
     {
       separator: true,
@@ -53,7 +58,7 @@ export function NavFooter({ profile }: { profile: Profile }) {
   ];
 
   return (
-    <SidebarMenu>
+    <SidebarMenu className="cursor-pointer">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <SidebarMenuButton size="lg">
@@ -92,13 +97,13 @@ export function NavFooter({ profile }: { profile: Profile }) {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             {items.map((item) => (
-              <>
+              <React.Fragment key={item.label}>
               { item.separator && <DropdownMenuSeparator /> }
-              <DropdownMenuItem key={item.label}>
+              <DropdownMenuItem onClick={item.onClick}>
                 <item.icon className="text-inherit" />
                 {item.label}
               </DropdownMenuItem>
-              </>
+              </React.Fragment>
             ))}
           </DropdownMenuGroup>
         </DropdownMenuContent>
