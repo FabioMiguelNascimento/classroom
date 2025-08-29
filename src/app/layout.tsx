@@ -1,10 +1,9 @@
-
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/Sidebar/AppSidebar";
+import SidebarStateClient from "@/components/Sidebar/SidebarTriggerStateClient";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "../styles/globals.css";
-import "../styles/globals.scss";
-import { AppSidebar } from "@/components/app-sidebar";
 
 export const font = Montserrat({
   weight: ["400", "500", "600", "700"],
@@ -23,13 +22,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body className={`${font.className} font-sans antialiased`}>
         <SidebarProvider>
           <AppSidebar />
+            <SidebarStateClient />
           <main>
-            <SidebarTrigger />
             {children}
           </main>
         </SidebarProvider>
