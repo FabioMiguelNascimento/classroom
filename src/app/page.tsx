@@ -4,9 +4,8 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { CardSim } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Card>

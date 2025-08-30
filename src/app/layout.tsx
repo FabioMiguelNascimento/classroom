@@ -22,14 +22,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  return (
+  return (  
     <html lang="en">
-      <body className={`${font.className} font-sans antialiased`}>
+      <body className={`${font.className} font-sans antialiased w-screen h-screen`}>
         <SidebarProvider>
           <AppSidebar />
             <SidebarStateClient />
-          <main>
+          <main className="w-screen h-screen p-1">
             {children}
           </main>
         </SidebarProvider>
