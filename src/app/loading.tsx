@@ -1,10 +1,16 @@
-import Image from "next/image";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function LoadingState() {
-    return (
-        <div className="flex items-center justify-center gap-2 flex-col w-full h-screen ">
-            <Image src='/loading-peep.png' width={300} height={250} alt="loading placeholder"/>
-            <h2 className="font-medium text-2xl">Loading...</h2>
-        </div>
-    )
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+      <Skeleton className="h-64 w-[450px]" />
+      <Skeleton className="h-64 w-[450px]" />
+      <Skeleton className="h-64 w-[450px]" />
+      <Skeleton className="h-64 w-[450px]" />
+      <Skeleton className="h-64 w-[450px]" />
+      <Skeleton className="h-64 w-[450px]" />
+      <Skeleton className="h-64 w-[450px]" />
+      <Skeleton className="h-64 w-[450px]" />
+    </div>
+  );
 }
